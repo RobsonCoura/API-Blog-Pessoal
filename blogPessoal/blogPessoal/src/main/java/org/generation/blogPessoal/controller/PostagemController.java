@@ -39,5 +39,10 @@ public class PostagemController {
     public ResponseEntity<Postagem> postPostagem(@RequestBody Postagem postagem){
         return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(postagem));
     }
-    
+    // Método para atualizar postagem
+    @PutMapping
+    public ResponseEntity<Postagem> putPostagem(@RequestBody Postagem postagem){
+        return ResponseEntity.status(HttpStatus.OK).body(repository.save(postagem));
+    }
+
 }
