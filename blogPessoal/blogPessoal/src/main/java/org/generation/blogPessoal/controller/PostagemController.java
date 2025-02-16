@@ -28,5 +28,11 @@ public class PostagemController {
     public ResponseEntity<Postagem> getById(@PathVariable long id){
         return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
     }
+
+    // Método para buscar postagem por título
+    @GetMapping("/titulo/{titulo}")
+    public ResponseEntity<List<Postagem>> getByTitulo(@PathVariable String titulo){
+        return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
+    }
     
 }
