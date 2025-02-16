@@ -34,5 +34,10 @@ public class PostagemController {
     public ResponseEntity<List<Postagem>> getByTitulo(@PathVariable String titulo){
         return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
     }
+    // Método para cadastrar postagem
+    @PostMapping
+    public ResponseEntity<Postagem> postPostagem(@RequestBody Postagem postagem){
+        return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(postagem));
+    }
     
 }
