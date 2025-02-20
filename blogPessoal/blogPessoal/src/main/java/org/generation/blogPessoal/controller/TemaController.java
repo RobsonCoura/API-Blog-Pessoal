@@ -39,4 +39,10 @@ public class TemaController {
     public ResponseEntity<Tema> postTema(@RequestBody Tema tema) {
         return ResponseEntity.status(201).body(repository.save(tema));
     }
+
+    // Metodo para atualizar tema
+    @PutMapping
+    public ResponseEntity<Tema> putTema(@RequestBody Tema tema) {
+        return ResponseEntity.status(200).body(repository.save(tema));
+    }
 }
