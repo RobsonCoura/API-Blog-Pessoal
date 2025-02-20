@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
+@RequestMapping("/temas")
 public class TemaController {
 
     // Injeção de dependência
@@ -44,5 +45,11 @@ public class TemaController {
     @PutMapping
     public ResponseEntity<Tema> putTema(@RequestBody Tema tema) {
         return ResponseEntity.status(200).body(repository.save(tema));
+    }
+
+    // Metodo para deletar tema
+    @DeleteMapping("/{id}")
+    public void deleteTema(@PathVariable long id) {
+        repository.deleteById(id);
     }
 }
