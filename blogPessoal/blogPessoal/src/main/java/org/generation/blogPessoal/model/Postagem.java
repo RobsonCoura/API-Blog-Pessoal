@@ -1,5 +1,6 @@
 package org.generation.blogPessoal.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import org.antlr.v4.runtime.misc.NotNull;
@@ -25,6 +26,9 @@ public class Postagem {
     @Temporal(TemporalType.TIMESTAMP)
     private Date date = new Date(System.currentTimeMillis());
 
+    @ManyToOne
+    @JsonIgnoreProperties("postagem")
+    private Tema tema;
 
     // Getters e Setters
     public long getId() {
@@ -57,6 +61,14 @@ public class Postagem {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public Tema getTema() {
+        return tema;
+    }
+
+    public void setTema(Tema tema) {
+        this.tema = tema;
     }
 
 }
